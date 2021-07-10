@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'shopper-data'`, () => {
+  it(`should have as title 'Angular12Crud'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('shopper-data');
+    expect(app.title).toEqual('Angular12Crud');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('shopper-data app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('Angular12Crud app is running!');
   });
 });
