@@ -1,0 +1,16 @@
+{
+    "env": {
+        "name": "DEPLOY"
+    },
+    "apiServer": {
+        "baseUrl": "https://main-shopper-k2vermp6up0tkljs-gtw.qovery.io/",
+        "showError": true,
+        "authentication": {
+            "endPoint": "api/auth/login",
+            "sessionTimeOut": 5
+        },
+        "category": {
+            "categoryList": "api/category"
+        }
+    }
+}
