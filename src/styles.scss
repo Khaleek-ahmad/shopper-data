@@ -1,0 +1,222 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+app-dashboard {
+    display: flex;
+    width: 100%;
+}
+
+.dashboard-filter p-calendar>span{display:flex;}
+.dashboard-filter p-calendar>span .ui-inputtext{width:100%;}
+
+app-privacy-policy{width: 100%;}
+.btn, input[type="button"], input[type="submit"], input[type="reset"], input[type="file"]::-webkit-file-upload-button, button{ border-radius:0;}
+/********************************/
+body .ui-table .ui-table-thead > tr > th {
+    padding: .75rem;
+    
+    font-weight: 700;
+    color: #292b2c;
+    
+    border-width: 1px 0 0 0;
+    white-space: nowrap;
+    // border-top: 1px solid var(--darkblue);
+    // background-color: var(--aliceblue);
+    border-top: 1px solid var(--white);
+    background-color: var(--white);
+}
+
+body .ui-table .ui-table-tbody > tr > td {
+    background-color: inherit;
+    border: 1px solid var(--darkblue);
+    border-width: 1px 0 0 0;
+    padding:.75rem;
+    word-wrap: break-word;
+}
+
+body .ui-table .ui-table-tbody > tr:nth-child(even) {
+    background-color: inherit;
+}
+
+body .ui-table .ui-table-tbody > tr:hover{    background-color: #f5f8fa;}
+
+body .ui-table .ui-sortable-column:not(.ui-state-highlight):hover {
+    background-color: var(--aliceblue);
+    color: #333333;
+}
+
+body .ui-paginator {
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+}
+
+body .ui-paginator .ui-paginator-pages .ui-paginator-page.ui-state-active {
+    background-color: var(--aliceblue);
+    color: var(--deepblue);
+}
+
+app-create-source {
+    width: 100%;
+}
+select.form-control:not([size]):not([multiple]) {
+    height:inherit;
+    border-radius: 0;
+}
+
+.ui-calendar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+body .ui-inputtext{
+padding:0;
+border:0; font-size:1.2rem;
+max-width: -webkit-fill-available;
+}
+
+
+
+
+body .ui-button{
+    margin: 0;
+color:var(--deepblue);
+    background-color: transparent;
+    border: 0;
+}
+
+body .ui-button.ui-button-icon-only .ui-button-text {
+    padding: 0;
+}
+
+body .ui-table .ui-sortable-column.ui-state-highlight {
+    //  background-color: var(--deepblue);
+    //color: #ffffff;
+    background-color: var(--white);
+    color: #000;
+    border: 0 !important;
+}
+body .ui-table .ui-sortable-column.ui-state-highlight .ui-sortable-column-icon {
+    color: #7a99ac !important;
+}
+.dialog h4 {
+    font-size: 1.6rem;
+    color: var(--deepblue);
+    // margin: -12px -12px 0 -12px;
+    padding: 1rem 2rem;
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--darkblue);
+    font-weight: 500;
+}
+
+body .ui-widget {
+    font-family: inherit;
+}
+body .ui-table .ui-sortable-column .ui-sortable-column-icon {
+    color: #7a99ac;
+}
+
+/**********/
+.calendar_wrap .ui-calendar .ui-datepicker{left:inherit !important; right:0 !important;}
+
+
+.dropdown-menu>li>a {    display: block;    padding: .6rem 2rem;    clear: both;   font-weight: normal;    line-height: 1.428571429;    color: #777;    white-space: nowrap;}
+
+.dropdown-menu a{cursor: pointer;}
+
+/***********/
+.boxscroll{
+    max-height: 200px;
+    overflow-y: auto;
+}
+.boxscroll::-webkit-scrollbar {  width: 6px; height:6px; }
+.boxscroll::-webkit-scrollbar-track { box-shadow: inset 0 0 5px grey;  border-radius:0; } 
+.boxscroll::-webkit-scrollbar-thumb { background:#aaaaaa;  border-radius: 0; }
+.boxscroll::-webkit-scrollbar-thumb:hover { background: #6c757d; }
+
+/**Design Fixes**/
+.modal-body .ui-table .ui-table-wrapper{
+    overflow: auto;
+        max-height: 50vh;
+    }
+
+/****/
+#mainwrapper{display:flex; flex-direction:column; width: calc(100% - 155px );}
+#mainwrapper>.ng-star-inserted{height: calc(100% - 100px );}
+
+/*********************/
+// p-calendar.form-control { padding: .3rem .75rem;}
+
+/**********************/
+.b-0{border: 0 !important;}
+
+/****************/
+.no-arrow .dropdown-toggle:after{content:none;}
+
+/********/
+body .innerbox .ui-inputtext {
+    width: 100%;
+}
+
+/******/
+#tab2 .innerbox .row {
+    margin-left:-4px;
+    margin-right:-4px;
+}
+
+#tab2 .innerbox .row div[class*="col-"] {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.innerbox .dropdown.no-arrow {
+    background: #fff;
+    border: 1px solid var(--darkblue);
+    padding: 2px 4px;
+    border-left-color: #fff;
+    margin-left: -2px;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    width:0;
+}
+.innerbox .dropdown.no-arrow>a{margin-left: -12px;}
+
+/***/
+p-calendar.form-control {
+    padding: .67rem .75rem;
+}
+
+.linkTag{
+    color: #007ad9 !important;
+    cursor: pointer !important;
+}
+
+.linkTag:hover{
+text-decoration: underline !important;
+}
+
+
+/************/
+.table tbody tr:focus {
+    outline: 0;
+}
+/*****/
+.linktag{color:#007ad9 !Important; cursor:pointer !important;}
+.linktag:hover, .linktag:focus{text-decoration:underline !important;}
+
+/*****************/
+.modal-dialog-centered {
+    min-height: calc(100% - (.5rem * 2));
+    display: flex;
+    align-items: center;
+}
+.modal-dialog-centered .modal-content{width:100%;}
+@media(min-width:576px){
+    .modal-dialog-centered {
+    min-height: calc(100% - (1.75rem * 2));   
+    }
+}

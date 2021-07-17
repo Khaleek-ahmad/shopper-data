@@ -1,0 +1,17 @@
+<!-- <div [@dialog] *ngIf="visible" class="dialog" > -->
+<!-- <div [@dialog] *ngIf="visible" #myIdentifier [ngClass]="max?' dialog1':'dialog'" style="max-width:500px;" > -->
+	<div [@dialog] *ngIf="visible" #myIdentifier [ngClass]="max?' dialog1':'dialog'" [ngStyle]="mystyle" >
+
+	
+
+	<ng-content></ng-content> 
+	<button *ngIf="closable" (click)="close()" aria-label="Close" class="dialog__close-btn"><i class="fa fa-times"></i></button>
+	 <!-- <button   (click)="maximize()" aria-label="Maximize" class="dialog__Maximize-btn">#</button> 
+	<button   (click)="minimize()" aria-label="Minimize" class="dialog__Minimize-btn">-</button>  -->
+
+</div>
+<div *ngIf="visible" class="overlay" (click)="close()"></div>
+
+
+
+
