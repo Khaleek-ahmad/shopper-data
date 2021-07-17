@@ -95,17 +95,18 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js"), __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js"), __webpack_require__(/*! src/app/shared/HttpService */ "./src/app/shared/HttpService.ts"), __webpack_require__(/*! src/app/shared/App.Config */ "./src/app/shared/App.Config.ts"), __webpack_require__(/*! src/app/shared/Constant */ "./src/app/shared/Constant.ts"), __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js"), __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js"), __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm2015/ngx-toastr.js"), __webpack_require__(/*! src/app/services/auth/AuthService */ "./src/app/services/auth/AuthService.ts")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, tslib_1, core_1, HttpService_1, App_Config_1, Constant_1, forms_1, router_1, ngx_toastr_1, AuthService_1) {
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js"), __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js"), __webpack_require__(/*! src/app/shared/HttpService */ "./src/app/shared/HttpService.ts"), __webpack_require__(/*! src/app/shared/App.Config */ "./src/app/shared/App.Config.ts"), __webpack_require__(/*! src/app/shared/Constant */ "./src/app/shared/Constant.ts"), __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js"), __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js"), __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm2015/ngx-toastr.js"), __webpack_require__(/*! src/app/services/auth/AuthService */ "./src/app/services/auth/AuthService.ts"), __webpack_require__(/*! src/app/services/token.storage.service */ "./src/app/services/token.storage.service.ts")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, tslib_1, core_1, HttpService_1, App_Config_1, Constant_1, forms_1, router_1, ngx_toastr_1, AuthService_1, token_storage_service_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let LoginComponent = class LoginComponent {
-        constructor(fb, httpService, router, toaster, authService, route) {
+        constructor(fb, httpService, router, toaster, authService, route, tokenStorage) {
             this.fb = fb;
             this.httpService = httpService;
             this.router = router;
             this.toaster = toaster;
             this.authService = authService;
             this.route = route;
+            this.tokenStorage = tokenStorage;
             this.difference = "";
             this.loginOut = new core_1.EventEmitter();
             this.showLoginPage = false;
@@ -144,6 +145,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                     this.loading = false;
                     sessionStorage.basic = email;
                     this.authService.saveToken(JSON.stringify(data.token));
+                    this.tokenStorage.saveToken(data.token);
                     sessionStorage.setItem('userToken', JSON.stringify(data.token));
                     sessionStorage.setItem('userName', email);
                     let routingPath = "generic/dashboard/category";
@@ -166,7 +168,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         { type: router_1.Router },
         { type: ngx_toastr_1.ToastrService },
         { type: AuthService_1.AuthService },
-        { type: router_1.ActivatedRoute }
+        { type: router_1.ActivatedRoute },
+        { type: token_storage_service_1.TokenStorageService }
     ];
     tslib_1.__decorate([
         core_1.Output()
