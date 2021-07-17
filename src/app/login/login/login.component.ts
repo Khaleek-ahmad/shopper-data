@@ -6,7 +6,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { CompareJSON } from '../../shared/CompareJson';
+
 import { AuthService } from 'src/app/services/auth/AuthService';
 import { LoginModel } from '../login.model';
 
@@ -18,9 +18,11 @@ import { LoginModel } from '../login.model';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
+  // loginForm: FormGroup;
+  //public loginForm: FormGroup;
+  loginForm:any;
   loading: boolean;
-  private apiServer;
+  private apiServer:any;
   private difference: any = "";
   @Output() loginOut: EventEmitter<LoginModel> = new EventEmitter<LoginModel>();
   showLoginPage: boolean = false;
@@ -33,8 +35,8 @@ export class LoginComponent implements OnInit {
   ) {
     this.loading = true;
     this.apiServer = AppConfig.settings.apiServer;
-    let checkConfg = new CompareJSON(this.httpService);
-    checkConfg.compareJonFile("assets/configurables/config.deploy.json", AppConfig.settings, false).then(x => this.difference = x);
+    // let checkConfg = new CompareJSON(this.httpService);
+    // checkConfg.compareJonFile("assets/configurables/config.deploy.json", AppConfig.settings, false).then(x => this.difference = x);
   }
 
   ngOnInit() {

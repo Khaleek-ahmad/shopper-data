@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { CategoryList } from 'src/app/models/category-list.model';
-import { Category } from 'src/app/models/category.model';
+import { CategoryList } from '../../../Models/category-list.model';
+import { Category } from '../../../Models/category.model';
 import { CategoryService } from 'src/app/services/category.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { MessageService } from 'primeng/api';
@@ -27,10 +27,11 @@ import { Table } from 'primeng/table';
 
 
 export class CategoryListComponent implements OnInit {
-  @ViewChild('dt', { static: false }) private _dt: Table;
-  public cols: any[];
+  // @ViewChild('dt', { static: false }) private _dt: Table;
+  // public cols: any[];
   public loading: boolean = false;
-  public categoryList: Category[];
+  // public categoryList: Category[];
+  categoryList: any;
   clonedProducts: { [s: string]: any } = {};
   constructor(
     private CategoryService: CategoryService,
@@ -45,28 +46,22 @@ export class CategoryListComponent implements OnInit {
     this.getCotegoryList();
   }
   init() {
-    this.cols = [
-      { field: '_id', header: 'ID', index: 1 },
-      { field: 'name', header: 'USER NAME', index: 2 },
-      { field: 'image', header: 'IMAGE', index: 3 },
-      { field: 'update', header: 'UPDATE', index: 4 },
-      { field: 'delete', header: 'DELETE', index: 5 },
-    ];
+    // this.cols = [
+    //   { field: '_id', header: 'ID', index: 1 },
+    //   { field: 'name', header: 'USER NAME', index: 2 },
+    //   { field: 'image', header: 'IMAGE', index: 3 },
+    //   { field: 'update', header: 'UPDATE', index: 4 },
+    //   { field: 'delete', header: 'DELETE', index: 5 },
+    // ];
   }
 
-  thumbnail: SafeResourceUrl;
+  // thumbnail: SafeResourceUrl;
   getCotegoryList() {
 
     this.CategoryService.getAll().subscribe((response: any) => {
      // debugger;
       this.categoryList = response.body["categories"];
 
-
-      // let objectURL = 'data:image/jpeg;base64,' + response.body["categories"][0].image;
-      // this.thumbnail = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-
-      // this.thumbnail = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + response.body["categories"][0].image);
-      console.log("thumbnail -> ", this.thumbnail)
     })
   }
 

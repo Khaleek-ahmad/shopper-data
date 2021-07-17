@@ -25,8 +25,8 @@ export class MainComponent implements OnInit {
   // ngOnChanges(){
   //   $(".content-wrapper").css("height", $(window).height() - 90);
   // }
-   @HostListener('window:resize', ['$event'])
-      onResize(event) {
-      $(".content-wrapper").css("height", $(window).height() - 110);
-   }
+  //  @HostListener('window:resize', ['$event'])
+  //     onResize(event) {
+  //     $(".content-wrapper").css("height", $(window).height() - 110);
+  //  }
 }

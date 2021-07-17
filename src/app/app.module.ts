@@ -7,7 +7,7 @@ import { GenericModule } from './generic/generic.module';
 import { HttpService } from './shared/HttpService';
 import { HttpClientModule, HTTP_INTERCEPTORS, HttpClientJsonpModule } from '@angular/common/http';
 import { AppConfig } from './shared/App.Config';
-import { AddHeaderInterceptor } from './shared/interceptor';
+
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Tutorial } from '../models/tutorial.model';
-import { Category } from '../models/category.model';
-import { Login } from '../models/login.model';
+import { Tutorial } from '../Models/tutorial.model';
+import { Category } from '../Models/category.model';
+import { Login } from '../Models/login.model';
 
 const baseUrl = 'https://main-shopper-k2vermp6up0tkljs-gtw.qovery.io';
 

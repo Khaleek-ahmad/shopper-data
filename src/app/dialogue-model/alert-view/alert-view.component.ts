@@ -20,17 +20,17 @@ import { trigger, style, animate, transition } from '@angular/animations';
 export class AlertViewComponent implements OnInit, AfterViewInit {
   @Input() closable = true;
   @Input() visible: boolean;
-  @Input() setwidth;
+  //@Input() setwidth;
   @Output() onVisibleChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
   // @ViewChild(TaskShellDetailComponent) managerTaskShell:TaskShellDetailComponent;
-  @Output('onMax') onMax;
-  mystyle;
+  // @Output('onMax') onMax;
+  //mystyle;
 
-  max: boolean;
+  //max: boolean;
 
   constructor() {
     this.visible = true;
-    this.onMax = new EventEmitter<boolean>(false);
+   // this.onMax = new EventEmitter<boolean>(false);
   }
 
   ngOnInit() {
@@ -40,39 +40,39 @@ export class AlertViewComponent implements OnInit, AfterViewInit {
   }
   ngOnChanges() {
   
-    if (this.setwidth !== undefined)
-      this.mystyle = { 'max-width': this.setwidth };
-    else
-      this.mystyle = { 'max-width': '550px' };
+    // if (this.setwidth !== undefined)
+    //   this.mystyle = { 'max-width': this.setwidth };
+    // else
+    //   this.mystyle = { 'max-width': '550px' };
     
   }
   close() {
-    this.visible = false;
-    this.max = false;
-    this.onVisibleChanged.emit(this.visible);
+    // this.visible = false;
+    // this.max = false;
+    // this.onVisibleChanged.emit(this.visible);
 
   }
   maximize() {
 
-    this.max = true;
+    //this.max = true;
     //this.onMax.emit(true);
-    this.onMax.emit({ max: true, width: this.myIdentifier.nativeElement.offsetWidth });
+    //this.onMax.emit({ max: true, width: this.myIdentifier.nativeElement.offsetWidth });
   }
   minimize() {
-    this.max = false;
+    //this.max = false;
     //this.onMax.emit(false);
-    this.onMax.emit({ max: true, width: this.myIdentifier.nativeElement.offsetWidth });
+    //this.onMax.emit({ max: true, width: this.myIdentifier.nativeElement.offsetWidth });
   }
 
   ngAfterViewInit() {
 
-    if (this.myIdentifier) {
-      console.log("this.myIdentifier.nativeElement.offsetWidth : ", this.myIdentifier.nativeElement.offsetWidth);
-      //     this.onMax.emit({max:this.max,width:this.myIdentifier.nativeElement.offsetWidth});
-    }
+    // if (this.myIdentifier) {
+    //   console.log("this.myIdentifier.nativeElement.offsetWidth : ", this.myIdentifier.nativeElement.offsetWidth);
+    //   //     this.onMax.emit({max:this.max,width:this.myIdentifier.nativeElement.offsetWidth});
+    // }
   }
 
-  @ViewChild('myIdentifier', { static: false })
-  myIdentifier: ElementRef;
+  //@ViewChild('myIdentifier', { static: false })
+ // myIdentifier: ElementRef;
 
 }

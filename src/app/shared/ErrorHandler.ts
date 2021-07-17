@@ -2,7 +2,7 @@ import { ErrorHandler, Injectable, Injector, Inject, NgZone } from '@angular/cor
 import { ToastrService } from 'ngx-toastr';
 
 import { HttpClient } from '@angular/common/http';
-import { FilterError } from './FilterError';
+
 import { HttpService } from './HttpService';
 import { AppConfig } from './App.Config';
 import { Constants } from './Constant';
@@ -39,7 +39,7 @@ export class GlobalErrorHandler extends ErrorHandler {
         const status = error.error&& error.error.status != undefined ? error.error.status : error.status;
         if (this.isApiError(status, error)) {
         
-            let errorDesc = this.filterError(error);
+        
            
           const except = error.error && error.error.exception ? error.error.exception : "";
           let errorStr: string = "";
@@ -61,8 +61,8 @@ export class GlobalErrorHandler extends ErrorHandler {
             
             console.log(showError,Constants.SHOW_ERROR);
           
-        if(showError)
-        this.toastrService.error(errorStr||errorDesc, "", { timeOut: 0 });        
+        // if(showError)
+        // this.toastrService.error(errorStr||errorDesc, "", { timeOut: 0 });        
            
         }
         else {
@@ -79,29 +79,7 @@ export class GlobalErrorHandler extends ErrorHandler {
     }
 
   }
-  private errorDetail: string;
 
-  private filterError(error:any){
-    console.log("Error : ", error);
-   
-    let traverse:FilterError = new FilterError();
-    traverse.traverse(error);
-    let errorDesc = traverse.errorDesc;
-  
-    let path = errorDesc.path;
-
-    
-    if(!path)
-      {
-       
-        let pathArr = errorDesc.url.split('/');
-        path = pathArr[pathArr.length-3] +'/' + pathArr[pathArr.length-2] +'/'+ pathArr[pathArr.length-1];
-      }
-    
-      console.log(errorDesc,'errorDesc');
-
-    return errorDesc.error||errorDesc.message ;//+ " :: "+ errorDesc.status +" :: " + path;//"{Hello<br>Hi\r\nHow are you?}";
-    }
   
 
   private WriteError(error: any) {

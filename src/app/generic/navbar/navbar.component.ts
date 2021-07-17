@@ -6,9 +6,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  isCloseVisible: boolean;
-  public userName: string;
-  isClassVisible: boolean;
+  isCloseVisible:any;
+  public userName:any;
+  isClassVisible:any;
 
   constructor(private router: Router, private elem: ElementRef
   ) { }

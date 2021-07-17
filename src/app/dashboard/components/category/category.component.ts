@@ -19,12 +19,12 @@ export class CategoryComponent implements OnInit {
     this.isShowCreateCategory = true;
     //this.sendReceiveData.saveOnShowCreatePartner(true);
   }
-  onVisibledChange(value) {
+  onVisibledChange(value:any) {
     this.isShowCreateCategory = value;
     // this.sendReceiveData.saveOnShowCreatePartner(value);
   }
 
-  onClose(value) {
+  onClose(value:any) {
     this.isShowCreateCategory = value;
   }
 
