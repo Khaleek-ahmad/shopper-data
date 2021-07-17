@@ -1,0 +1,33 @@
+<form *ngIf="showLoginPage" [formGroup]="loginForm" class="form-group mt-4_" autocomplete="on" novalidate
+  style="height:100%;">
+
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+
+  <div class="login-wrapper">
+    
+    <div class="login-box">
+      <div class="navbar1" >
+        <a class="navbar-brand" ><img src="assets/images/dashboard.png" alt="dashboard" style="width:250px; margin-bottom:5em;"></a>
+       </div>    
+
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="email">
+        <span>Username</span>
+      </div>
+
+      <div class="form-group">
+        <input type="password" class="form-control" formControlName="password">
+        <span>Password</span></div>
+
+        <div class="form-group">       
+          <span>Forgort Password</span></div>
+
+      
+      <div class="btn-bar">
+        <button type="submit" class="btn btn-primary " (click)="onSubmit()">Login</button>
+
+      </div>
+    </div>
+  </div>
+
+</form>

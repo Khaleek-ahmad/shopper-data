@@ -1,38 +1,63 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-
+import { NgModule, APP_INITIALIZER, ErrorHandler } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AddTutorialComponent } from './components/add-tutorial/add-tutorial.component';
-import { TutorialDetailsComponent } from './components/tutorial-details/tutorial-details.component';
-import { TutorialsListComponent } from './components/tutorials-list/tutorials-list.component';
-import { LoginComponent } from './components/login/login.component';
-import { AddCategoryComponent } from './components/add-category/add-category.component';
-import { CategoryListComponent } from './components/category-list/category-list.component';
-import { authInterceptorProviders } from './services/auth.interceptor';
-import { NgxPaginationModule } from 'ngx-pagination';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { GenericModule } from './generic/generic.module';
+import { HttpService } from './shared/HttpService';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClientJsonpModule } from '@angular/common/http';
+import { AppConfig } from './shared/App.Config';
+
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GlobalErrorHandler } from './shared/ErrorHandler';
+import { AuthService } from './services/auth/AuthService';
+import { AuthGuard } from './services/auth/auth-gaurd-service';
+
+import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
+export function initializeApp(appConfig: AppConfig) {
+  return () => appConfig.load();
+}
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddTutorialComponent,
-    TutorialDetailsComponent,
-    TutorialsListComponent,
-    LoginComponent,
-    AddCategoryComponent,
-    CategoryListComponent
+    NotFoundComponent,
+    ConfirmDialogComponent,
+   
+       
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    GenericModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    NgxPaginationModule 
+    HttpClientJsonpModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+  
   ],
-  providers: [authInterceptorProviders],
-  bootstrap: [AppComponent]
+  providers: [HttpService,
+    // { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    AppConfig,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [AppConfig], multi: true
+    },
+    // {
+    //   provide: ErrorHandler,
+    //   useClass: GlobalErrorHandler
+    // },
+    AuthService,
+    AuthGuard
+   
+  ],
+  bootstrap: [AppComponent],
+  exports:[ConfirmDialogComponent],
+  entryComponents:[ConfirmDialogComponent]
 })
 export class AppModule { }
