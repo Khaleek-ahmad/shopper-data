@@ -51,7 +51,7 @@ export class CategoryService {
 
   create(data: any): Observable<any> {
     // return this.http.post(baseUrl+ "/api/category", data);
-    return this.http.post("/api/category", data);
+    return this.http.post(this.apiServer[Constants.BASE_URL]+"api/category", data);
   }
 
   // update(id: any, data: any): Observable<any> {

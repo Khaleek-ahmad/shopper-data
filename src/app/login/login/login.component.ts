@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 
 import { AuthService } from 'src/app/services/auth/AuthService';
 import { LoginModel } from '../login.model';
+import { TokenStorageService } from 'src/app/services/token.storage.service';
 
 
 @Component({
@@ -31,7 +32,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private toaster: ToastrService,
     private authService: AuthService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private tokenStorage:TokenStorageService
   ) {
     this.loading = true;
     this.apiServer = AppConfig.settings.apiServer;
@@ -72,6 +74,7 @@ export class LoginComponent implements OnInit {
         this.loading = false;
         sessionStorage.basic = email;
         this.authService.saveToken(JSON.stringify(data.token));
+        this.tokenStorage.saveToken(data.token);
         sessionStorage.setItem('userToken', JSON.stringify(data.token));
         sessionStorage.setItem('userName', email);
         let routingPath = "generic/dashboard/category";
