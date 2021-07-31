@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 import { Observable } from 'rxjs';
-import { Tutorial } from '../Models/tutorial.model';
-import { Category } from '../Models/category.model';
-import { CategoryList } from '../Models/category-list.model';
 import { HttpService } from '../shared/HttpService';
 import { AppConfig } from 'src/app/shared/App.Config';
 import { Constants } from 'src/app/shared/Constant';

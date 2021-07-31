@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BnNgIdleService } from 'bn-ng-idle';
 import { Router } from '@angular/router';
 import { AppConfig } from './shared/App.Config';
+import '@angular/compiler';
 
 
 @Component({

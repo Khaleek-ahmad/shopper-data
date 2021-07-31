@@ -5,7 +5,7 @@ import { Constants } from 'src/app/shared/Constant';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+
 
 import { AuthService } from 'src/app/services/auth/AuthService';
 import { LoginModel } from '../login.model';
@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private httpService: HttpService,
     private router: Router,
-    private toaster: ToastrService,
     private authService: AuthService,
     private route: ActivatedRoute,
     private tokenStorage:TokenStorageService
@@ -59,7 +58,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     if (this.difference != "") {
-      this.toaster.error(this.difference + " missing in config file", "", { timeOut: 0 })
+      //this.toaster.error(this.difference + " missing in config file", "", { timeOut: 0 })
       return;
     }
 
