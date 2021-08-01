@@ -12,10 +12,7 @@
 
 # profiling files
 chrome-profiler-events*.json
-<<<<<<< HEAD
 speed-measure-plugin*.json
-=======
->>>>>>> main
 
 # IDEs and editors
 /.idea
