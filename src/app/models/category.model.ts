@@ -1,5 +1,5 @@
 export class Category {
-  _id?: any;
+  _id?:any;
   name?: string;
   image?: string;
   sequence?: number;

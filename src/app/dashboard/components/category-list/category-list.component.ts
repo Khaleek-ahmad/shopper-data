@@ -38,6 +38,7 @@ export class CategoryListComponent implements OnInit {
     private toasterService: ToastrService,
     private sanitizer: DomSanitizer,
     private messageService: MessageService
+    
   ) {
   }
 
@@ -65,10 +66,10 @@ export class CategoryListComponent implements OnInit {
     })
   }
 
-  updateCategory(id:any, name:any): void {
+  updateCategory(id:any, data:any): void {
     //this.message = '';
 
-    this.CategoryService.update(id,name)
+    this.CategoryService.update(id,data)
       .subscribe(
         response => {
           console.log(response);

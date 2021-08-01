@@ -16,6 +16,7 @@ import { AuthService } from './services/auth/AuthService';
 import { AuthGuard } from './services/auth/auth-gaurd-service';
 
 import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
+import { AuthInterceptor, authInterceptorProviders } from './services/auth.interceptor';
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
 }
@@ -40,7 +41,8 @@ export function initializeApp(appConfig: AppConfig) {
   
   ],
   providers: [HttpService,
-    // { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true },
+    //  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    authInterceptorProviders,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     AppConfig,
     {

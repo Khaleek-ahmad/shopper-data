@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Category } from '../../../Models/category.model'; 
-import { CategoryService } from '../../../services/category.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';  
+import { Category } from '../../../Models/category.model'; //'src/app/models/category.model';
+import { CategoryService } from 'src/app/services/category.service';
+
 @Component({
   selector: 'app-add-category',
   templateUrl: './add-category.component.html',
   styleUrls: ['./add-category.component.css']
 })
-
 export class AddCategoryComponent implements OnInit {
 
   form: FormGroup =  new FormGroup({
@@ -26,7 +25,7 @@ export class AddCategoryComponent implements OnInit {
         file: ['', Validators.required],
         image: [null]
       }     
-
+       
     );
   }
   get f(): { [key: string]: AbstractControl } {
@@ -34,7 +33,7 @@ export class AddCategoryComponent implements OnInit {
   }
 
   uploadFile(event:any) {
-    debugger;
+    
     const htmlElement = event.target as HTMLInputElement;
     if(htmlElement !=null && htmlElement.files !=null){
       let file = htmlElement.files[0];
@@ -69,7 +68,7 @@ export class AddCategoryComponent implements OnInit {
       formData.append("image", image.value);
 
     console.log("formData : ",JSON.stringify(formData, null, 2));
-
+    
     this.categoryService.create(formData)
       .subscribe(
         response => {
@@ -79,8 +78,8 @@ export class AddCategoryComponent implements OnInit {
         error => {
           console.log(error);
         });
-
-
+  
+   
   }
 
   onReset(): void {
