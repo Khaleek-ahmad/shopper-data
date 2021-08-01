@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --c production --sourceMap=false --base-href /shopper-data/",
+    "build:ci": "ng build --c production --sourceMap=false --base-href /shopper-data/",
+    "test:ci": "ng test --watch=false --code-coverage --source-map true",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
