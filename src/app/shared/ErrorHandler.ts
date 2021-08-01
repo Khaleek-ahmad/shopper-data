@@ -1,5 +1,4 @@
 import { ErrorHandler, Injectable, Injector, Inject, NgZone } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
 
 import { HttpClient } from '@angular/common/http';
 
@@ -19,9 +18,9 @@ export class GlobalErrorHandler extends ErrorHandler {
   }
 
   // Need to get ToastrService from injector rather than constructor injection to avoid cyclic dependency error
-  private get toastrService(): ToastrService {
-    return this.injector.get(ToastrService);
-  }
+  // private get toastrService(): ToastrService {
+  //   return this.injector.get(ToastrService);
+  // }
 
   public handleError(error: any): void {
 

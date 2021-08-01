@@ -1,7 +1,7 @@
-import { Category } from "./category.model";
+// import { Category } from "./category.model";
 
 export class CategoryList {
     count?: any;
-    categories?: Category[];    
+    //categories?: Category[];    
   }
   

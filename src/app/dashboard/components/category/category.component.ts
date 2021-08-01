@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class CategoryComponent implements OnInit {
 
+  loading:boolean=false;
   isShowCreateCategory: boolean = false;
   constructor() { }
   ngOnInit() {

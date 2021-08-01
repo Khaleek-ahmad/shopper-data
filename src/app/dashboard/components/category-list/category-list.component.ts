@@ -1,17 +1,13 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { CategoryList } from '../../../Models/category-list.model';
-import { Category } from '../../../Models/category.model';
+// import { Category } from '../../../Models/category.model';
 import { CategoryService } from 'src/app/services/category.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { MessageService } from 'primeng/api';
+//import { MessageService } from 'primeng/api';
 
 
-import { ToastrService } from 'ngx-toastr';
-
-import { Table } from 'primeng/table';
 @Component({
   selector: 'app-category-list',
-  providers: [MessageService],
+  providers: [],
   templateUrl: './category-list.component.html',
    styleUrls: ['./category-list.component.css']
   ,
@@ -35,10 +31,8 @@ export class CategoryListComponent implements OnInit {
   clonedProducts: { [s: string]: any } = {};
   constructor(
     private CategoryService: CategoryService,
-    private toasterService: ToastrService,
     private sanitizer: DomSanitizer,
-    private messageService: MessageService
-    
+    //private messageService: MessageService
   ) {
   }
 
@@ -80,33 +74,33 @@ export class CategoryListComponent implements OnInit {
         });
   }
 
-  onRowEditInit(data: Category) {
-   // debugger;
-    this.clonedProducts[data._id] = { ...data };
-  }
-  onRowDeleteInit(data: Category) {
-     debugger;
-     this.clonedProducts[data._id] = { ...data };
-   }
+  // onRowEditInit(data: Category) {
+  //  // debugger;
+  //   this.clonedProducts[data._id] = { ...data };
+  // }
+  // onRowDeleteInit(data: Category) {
+  //    debugger;
+  //    this.clonedProducts[data._id] = { ...data };
+  //  }
 
-  onRowEditSave(data: Category) {  
+  // onRowEditSave(data: Category) {  
     
-    if (data._id.length > 0) { 
-      debugger;
-      // let dataModel=<Category>{};
-      // dataModel._id=data._id;
-      // dataModel.image=data.image;
-      // dataModel.name=data.name;
-      // dataModel.sequence=data.sequence;
+  //   if (data._id.length > 0) { 
+  //     debugger;
+  //     // let dataModel=<Category>{};
+  //     // dataModel._id=data._id;
+  //     // dataModel.image=data.image;
+  //     // dataModel.name=data.name;
+  //     // dataModel.sequence=data.sequence;
 
-      this.updateCategory(data._id, data)
-      delete this.clonedProducts[data._id];
-      this.messageService.add({severity:'success', summary: 'Success', detail:'Category is updated'});
-    }
-    else {
-      this.messageService.add({severity:'error', summary: 'Error', detail:'Invalid Price'});
-    }
-  }
+  //     this.updateCategory(data._id, data)
+  //     delete this.clonedProducts[data._id];
+  //     //this.messageService.add({severity:'success', summary: 'Success', detail:'Category is updated'});
+  //   }
+  //   else {
+  //     //this.messageService.add({severity:'error', summary: 'Error', detail:'Invalid Price'});
+  //   }
+  // }
   onRowEditCancel(index: number) {
     debugger;
     this.categoryList[index] = this.clonedProducts[this.categoryList[index]._id];

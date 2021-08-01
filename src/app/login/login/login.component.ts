@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 // import { CompareJSON } from '../../shared/CompareJson';
 import { AuthService } from 'src/app/services/auth/AuthService';
 import { LoginModel } from '../login.model';
+import { TokenStorageService } from 'src/app/services/token.storage.service';
 
 
 @Component({
@@ -17,28 +18,27 @@ import { LoginModel } from '../login.model';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-   loginForm: FormGroup;
+  loginForm: any;
   loading: boolean;
-  private apiServer;
+  private apiServer: any;
   private difference: any = "";
   @Output() loginOut: EventEmitter<LoginModel> = new EventEmitter<LoginModel>();
   showLoginPage: boolean = false;
   constructor(private fb: FormBuilder,
     private httpService: HttpService,
     private router: Router,
-    private toaster: ToastrService,
     private authService: AuthService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private tokenStorage: TokenStorageService
   ) {
     this.loading = true;
-    // this.apiServer = AppConfig.settings.apiServer;
+    this.apiServer = AppConfig.settings.apiServer;
     // let checkConfg = new CompareJSON(this.httpService);
     // checkConfg.compareJonFile("assets/configurables/config.deploy.json", AppConfig.settings, false).then(x => this.difference = x);
   }
 
   ngOnInit() {
-    this.showLoginPage = true; 
+    this.showLoginPage = true;
     this.loading = false;
     this.init();
 
@@ -50,12 +50,13 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
-  onSubmit() {   
+  onSubmit() {
+    debugger;
     if (this.loginForm.invalid) {
       return;
     }
     if (this.difference != "") {
-      this.toaster.error(this.difference + " missing in config file", "", { timeOut: 0 })
+      //this.toaster.error(this.difference + " missing in config file", "", { timeOut: 0 })
       return;
     }
 
@@ -63,13 +64,14 @@ export class LoginComponent implements OnInit {
     let password = this.loginForm.value.password;
     this.loading = true;
     let url = this.apiServer[Constants.BASE_URL] + this.apiServer["authentication"]["endPoint"];
-    this.httpService.userAuthentication(url, email, password).subscribe((response: Response) => {   
+    this.httpService.userAuthentication(url, email, password).subscribe((response: Response) => {
       if (response.status == 200 && response.body != undefined) {
         debugger;
         let data: any = response.body;
         this.loading = false;
         sessionStorage.basic = email;
         this.authService.saveToken(JSON.stringify(data.token));
+        this.tokenStorage.saveToken(data.token);
         sessionStorage.setItem('userToken', JSON.stringify(data.token));
         sessionStorage.setItem('userName', email);
         let routingPath = "generic/dashboard/category";

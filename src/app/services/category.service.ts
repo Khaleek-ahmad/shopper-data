@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Tutorial } from '../Models/tutorial.model';
-import { Category} from '../Models/category.model';
+// import { Tutorial } from '../models/tutorial.model';
+// import { Category} from '../models/category.model';
 import { CategoryList } from '../Models/category-list.model';
 import { HttpService } from '../shared/HttpService';
 import { AppConfig } from 'src/app/shared/App.Config';
@@ -36,9 +36,9 @@ export class CategoryService {
   //   return this.http.get<any>(baseUrl+"/api/category", { params });
   // }
 
-  get(id: any): Observable<Category> {
-    return this.http.get(`${baseUrl}/${id}`);
-  }
+  // get(id: any): Observable<Category> {
+  //   return this.http.get(`${baseUrl}/${id}`);
+  // }
 
   create(data: any): Observable<any> {
     return this.http.post(baseUrl+ "/api/category", data);
@@ -56,12 +56,16 @@ export class CategoryService {
     return this.http.delete(baseUrl);
   }
 
-  findByTitle(title: any): Observable<Tutorial[]> {
-    return this.http.get<Tutorial[]>(`${baseUrl}?title=${title}`);
-  }
+  // findByTitle(title: any): Observable<Tutorial[]> {
+  //   return this.http.get<Tutorial[]>(`${baseUrl}?title=${title}`);
+  // }
 }
 
 
+  // create(data: any): Observable<any> {
+  //   // return this.http.post(baseUrl+ "/api/category", data);
+  //   return this.http.post(this.apiServer[Constants.BASE_URL]+"api/category", data);
+  // }
 
 // import { Injectable } from '@angular/core';
 // import { HttpClient, HttpHeaders } from '@angular/common/http';

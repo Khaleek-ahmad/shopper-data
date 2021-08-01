@@ -9,14 +9,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS, HttpClientJsonpModule } from '@ang
 import { AppConfig } from './shared/App.Config';
 
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { ToastrModule } from 'ngx-toastr';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GlobalErrorHandler } from './shared/ErrorHandler';
 import { AuthService } from './services/auth/AuthService';
 import { AuthGuard } from './services/auth/auth-gaurd-service';
-
-import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
-import { AuthInterceptor, authInterceptorProviders } from './services/auth.interceptor';
+import { authInterceptorProviders } from './services/auth.interceptor';
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
 }
@@ -25,10 +23,7 @@ export function initializeApp(appConfig: AppConfig) {
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent,
-    ConfirmDialogComponent,
-   
-       
+    NotFoundComponent,          
   ],
   imports: [
     BrowserModule,
@@ -36,12 +31,10 @@ export function initializeApp(appConfig: AppConfig) {
     GenericModule,
     HttpClientModule,
     HttpClientJsonpModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    BrowserAnimationsModule    
   
   ],
   providers: [HttpService,
-    //  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     authInterceptorProviders,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     AppConfig,
@@ -59,7 +52,7 @@ export function initializeApp(appConfig: AppConfig) {
    
   ],
   bootstrap: [AppComponent],
-  exports:[ConfirmDialogComponent],
-  entryComponents:[ConfirmDialogComponent]
+  exports:[],
+  entryComponents:[]
 })
 export class AppModule { }
