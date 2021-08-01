@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 // import { Category } from '../../../Models/category.model';
 import { CategoryService } from 'src/app/services/category.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-//import { MessageService } from 'primeng/api';
+
 
 
 @Component({
