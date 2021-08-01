@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-// https://primefaces.org/primeng/showcase/#/table/lazy
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
