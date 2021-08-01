@@ -5,7 +5,7 @@ import { Constants } from 'src/app/shared/Constant';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+//import { ToastrService } from 'ngx-toastr';
 // import { CompareJSON } from '../../shared/CompareJson';
 import { AuthService } from 'src/app/services/auth/AuthService';
 import { LoginModel } from '../login.model';
