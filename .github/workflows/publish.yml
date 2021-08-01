@@ -12,18 +12,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Use Node 12.x
+      - name: Use Node 14.x
         uses: actions/setup-node@v1
         with:
           node-version: "14.x"
       - name: Install dependencies
-        run: npm ci
+        run: npm i
       - name: Build
         run: npm run build:ci
-      - name: Test
-        run: npm run test:ci
       - name: Archive build
-        if: true
+        if: success()
         uses: actions/upload-artifact@v1
         with:
           name: deploy_dist
