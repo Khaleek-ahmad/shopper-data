@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Category } from '../../../Models/category.model';
+// import { Category } from '../../../Models/category.model';
 import { CategoryService } from 'src/app/services/category.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 //import { MessageService } from 'primeng/api';
@@ -60,10 +60,10 @@ export class CategoryListComponent implements OnInit {
     })
   }
 
-  updateCategory(id:any, name:any): void {
+  updateCategory(id:any, data:any): void {
     //this.message = '';
 
-    this.CategoryService.update(id,name)
+    this.CategoryService.update(id,data)
       .subscribe(
         response => {
           console.log(response);
@@ -74,33 +74,33 @@ export class CategoryListComponent implements OnInit {
         });
   }
 
-  onRowEditInit(data: Category) {
-   // debugger;
-    this.clonedProducts[data._id] = { ...data };
-  }
-  onRowDeleteInit(data: Category) {
-     debugger;
-     this.clonedProducts[data._id] = { ...data };
-   }
+  // onRowEditInit(data: Category) {
+  //  // debugger;
+  //   this.clonedProducts[data._id] = { ...data };
+  // }
+  // onRowDeleteInit(data: Category) {
+  //    debugger;
+  //    this.clonedProducts[data._id] = { ...data };
+  //  }
 
-  onRowEditSave(data: Category) {  
+  // onRowEditSave(data: Category) {  
     
-    if (data._id.length > 0) { 
-      debugger;
-      // let dataModel=<Category>{};
-      // dataModel._id=data._id;
-      // dataModel.image=data.image;
-      // dataModel.name=data.name;
-      // dataModel.sequence=data.sequence;
+  //   if (data._id.length > 0) { 
+  //     debugger;
+  //     // let dataModel=<Category>{};
+  //     // dataModel._id=data._id;
+  //     // dataModel.image=data.image;
+  //     // dataModel.name=data.name;
+  //     // dataModel.sequence=data.sequence;
 
-      this.updateCategory(data._id, data)
-      delete this.clonedProducts[data._id];
-      //this.messageService.add({severity:'success', summary: 'Success', detail:'Category is updated'});
-    }
-    else {
-      //this.messageService.add({severity:'error', summary: 'Error', detail:'Invalid Price'});
-    }
-  }
+  //     this.updateCategory(data._id, data)
+  //     delete this.clonedProducts[data._id];
+  //     //this.messageService.add({severity:'success', summary: 'Success', detail:'Category is updated'});
+  //   }
+  //   else {
+  //     //this.messageService.add({severity:'error', summary: 'Error', detail:'Invalid Price'});
+  //   }
+  // }
   onRowEditCancel(index: number) {
     debugger;
     this.categoryList[index] = this.clonedProducts[this.categoryList[index]._id];

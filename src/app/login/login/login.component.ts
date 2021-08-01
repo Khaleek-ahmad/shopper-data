@@ -5,8 +5,8 @@ import { Constants } from 'src/app/shared/Constant';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-
-
+import { ToastrService } from 'ngx-toastr';
+// import { CompareJSON } from '../../shared/CompareJson';
 import { AuthService } from 'src/app/services/auth/AuthService';
 import { LoginModel } from '../login.model';
 import { TokenStorageService } from 'src/app/services/token.storage.service';
@@ -18,12 +18,9 @@ import { TokenStorageService } from 'src/app/services/token.storage.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  // loginForm: FormGroup;
-  //public loginForm: FormGroup;
-  loginForm:any;
+  loginForm: any;
   loading: boolean;
-  private apiServer:any;
+  private apiServer: any;
   private difference: any = "";
   @Output() loginOut: EventEmitter<LoginModel> = new EventEmitter<LoginModel>();
   showLoginPage: boolean = false;
@@ -32,7 +29,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private route: ActivatedRoute,
-    private tokenStorage:TokenStorageService
+    private tokenStorage: TokenStorageService
   ) {
     this.loading = true;
     this.apiServer = AppConfig.settings.apiServer;
@@ -53,7 +50,8 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
-  onSubmit() {   
+  onSubmit() {
+    debugger;
     if (this.loginForm.invalid) {
       return;
     }
@@ -66,7 +64,7 @@ export class LoginComponent implements OnInit {
     let password = this.loginForm.value.password;
     this.loading = true;
     let url = this.apiServer[Constants.BASE_URL] + this.apiServer["authentication"]["endPoint"];
-    this.httpService.userAuthentication(url, email, password).subscribe((response: Response) => {   
+    this.httpService.userAuthentication(url, email, password).subscribe((response: Response) => {
       if (response.status == 200 && response.body != undefined) {
         debugger;
         let data: any = response.body;
